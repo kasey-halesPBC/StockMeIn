@@ -1,0 +1,81 @@
+﻿@page
+@model StockMeIn.Pages.Vehicles.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Stock In Vehicle</h2>
+
+<h4>Vehicle Information</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Vehicle.VIN" class="control-label"></label>
+                <input asp-for="Vehicle.VIN" class="form-control" />
+                <span asp-validation-for="Vehicle.VIN" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Vehicle.typeNU" class="control-label"></label>
+                <input asp-for="Vehicle.typeNU" class="form-control" />
+                <span asp-validation-for="Vehicle.typeNU" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Vehicle.year" class="control-label"></label>
+                <input asp-for="Vehicle.year" class="form-control" />
+                <span asp-validation-for="Vehicle.year" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Vehicle.make" class="control-label"></label>
+                <input asp-for="Vehicle.make" class="form-control" />
+                <span asp-validation-for="Vehicle.make" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Vehicle.model" class="control-label"></label>
+                <input asp-for="Vehicle.model" class="form-control" />
+                <span asp-validation-for="Vehicle.model" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Vehicle.body" class="control-label"></label>
+                <input asp-for="Vehicle.body" class="form-control" />
+                <span asp-validation-for="Vehicle.body" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Vehicle.color" class="control-label"></label>
+                <input asp-for="Vehicle.color" class="form-control" />
+                <span asp-validation-for="Vehicle.color" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Vehicle.inventoryDate" class="control-label"></label>
+                <input asp-for="Vehicle.inventoryDate" class="form-control" />
+                <span asp-validation-for="Vehicle.inventoryDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Vehicle.cost" class="control-label"></label>
+                <input asp-for="Vehicle.cost" class="form-control" />
+                <span asp-validation-for="Vehicle.cost" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Vehicle.salePrice" class="control-label"></label>
+                <input asp-for="Vehicle.salePrice" class="form-control" />
+                <span asp-validation-for="Vehicle.salePrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Vehicle.status" class="control-label"></label>
+                <input asp-for="Vehicle.status" class="form-control" />
+                <span asp-validation-for="Vehicle.status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

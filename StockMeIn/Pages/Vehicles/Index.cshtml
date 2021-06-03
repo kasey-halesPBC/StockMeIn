@@ -1,0 +1,91 @@
+﻿@page
+@model StockMeIn.Pages.Vehicles.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Vehicle Inventory</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Vehicle[0].ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vehicle[0].VIN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vehicle[0].typeNU)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vehicle[0].year)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vehicle[0].make)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vehicle[0].model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vehicle[0].color)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vehicle[0].inventoryDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vehicle[0].cost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vehicle[0].salePrice)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Vehicle) 
+{
+    @if (item.status == 'I')
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VIN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.typeNU)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.year)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.make)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.color)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.inventoryDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.salePrice)
+            </td>
+            <td>
+                <a asp-page="./Details" asp-route-id="@item.ID">Sell</a> |
+                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+        }
+    }
+    </tbody>
+</table>
