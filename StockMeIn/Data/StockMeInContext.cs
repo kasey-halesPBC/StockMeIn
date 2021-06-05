@@ -17,5 +17,7 @@ namespace StockMeIn.Data
         public DbSet<StockMeIn.Models.Vehicle> Vehicle { get; set; }
 
         public DbSet<StockMeIn.Models.Customer> Customer { get; set; }
+
+        public DbSet<StockMeIn.Models.CustomerVehicle> CustomerVehicle { get; set; }
     }
 }
