@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using StockMeIn.Data;
 
 namespace StockMeIn.Migrations
 {
     [DbContext(typeof(StockMeInContext))]
-    partial class StockMeInContextModelSnapshot : ModelSnapshot
+    [Migration("20210603023558_Customer")]
+    partial class Customer
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -66,30 +68,6 @@ namespace StockMeIn.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Customer");
-                });
-
-            modelBuilder.Entity("StockMeIn.Models.CustomerVehicle", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("CustID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CustStockID")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("EndDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("StartDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("CustomerVehicle");
                 });
 
             modelBuilder.Entity("StockMeIn.Models.Vehicle", b =>
