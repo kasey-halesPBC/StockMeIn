@@ -11,10 +11,15 @@ namespace StockMeIn.Models
     {
         [Display(Name = "Stock#")]
         public int ID { get; set; }
+        [RegularExpression(@"[A-Z0-9]*$", ErrorMessage = "Must Be Capital Letters and Numbers Only")]
+        [StringLength(17)]
         [Required]
         public string VIN { get; set; }
-        [Display(Name = "Type")]
-        public char typeNU { get; set; }
+        [StringLength(1)]
+        [RegularExpression(@"[NU]*$", ErrorMessage = "Valid Entries: N for New, U for Used")]
+        [Display(Name = "Type N/U")]
+        [Required]
+        public string typeNU { get; set; }
         [Display(Name = "Year")]
         [Required]
         public int year { get; set; }

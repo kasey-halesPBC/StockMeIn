@@ -20,10 +20,21 @@ namespace StockMeIn.Pages.Customers
         }
 
         public IList<Customer> Customer { get;set; }
+        [BindProperty(SupportsGet = true)]
+        public string SearchString { get; set; }
 
         public async Task OnGetAsync()
         {
-            Customer = await _context.Customer.ToListAsync();
+            // LINQ query to select custmoers
+            var lastNames = from m in _context.Customer
+                         select m;
+
+            if (!string.IsNullOrEmpty(SearchString))
+            {  // If search string isn't empty select from table where contains string
+                lastNames = lastNames.Where(s => s.LastName.Contains(SearchString));
+            }
+
+            Customer = await lastNames.ToListAsync();
         }
     }
 }

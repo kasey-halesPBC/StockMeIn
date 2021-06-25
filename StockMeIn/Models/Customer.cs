@@ -20,6 +20,7 @@ namespace StockMeIn.Models
         public string MiddleName { get; set; }
         public string Address { get; set; }
         public string City { get; set; }
+        [StringLength(2)]
         public string State { get; set; }
         public string Zip { get; set; }
         [Display(Name = "Home Phone")]
