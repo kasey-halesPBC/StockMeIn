@@ -10,7 +10,11 @@
 </div>
 
 <div>
-    <h4>Customer</h4>
+    <div>
+        <h4>Customer</h4>
+        <a asp-page="./Edit" asp-route-id="@Model.Customer.ID">Edit</a> |
+        <a asp-page="./Index">Back to List</a>
+    </div>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
@@ -92,8 +96,4 @@
             @Html.DisplayFor(model => model.Customer.CreateDAte)
         </dd>
     </dl>
-</div>
-<div>
-    <a asp-page="./Edit" asp-route-id="@Model.Customer.ID">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
 </div>

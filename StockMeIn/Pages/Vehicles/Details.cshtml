@@ -6,11 +6,15 @@
 }
 
 <div class="text-center">
-    <h2>Sell Vehicle</h2>
+    <h2>Sell/Assign Vehicle</h2>
 </div>
 
 <div>
-    <h4>Vehicle Information</h4>
+    <div>
+        <h4>Vehicle Information</h4>
+        <a asp-page="./Edit" asp-route-id="@Model.Vehicle.ID">Edit</a> |
+        <a asp-page="./Index">Back to List</a>
+    </div>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
@@ -87,7 +91,92 @@
         </dd>
     </dl>
 </div>
-<div>
-    <a asp-page="./Edit" asp-route-id="@Model.Vehicle.ID">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
+
+<div class="text-center">
+    <h2>Select Customer</h2>
 </div>
+
+<form>
+    <p>
+        Last Name: <input type="text" asp-for="SearchString" />
+        <input type="hidden" name="id" value="@Model.Vehicle.ID" />
+        <input type="submit" value="Search" />
+    </p>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer[0].ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer[0].LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer[0].FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer[0].MiddleName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer[0].Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer[0].City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer[0].State)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer[0].Zip)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer[0].CellPhone)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Customer)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MiddleName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.State)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Zip)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CellPhone)
+            </td>
+            <td>
+                <form method="post">
+
+                    <input type="hidden" name="VehicleID" asp-for="Vehicle.ID" />
+                    <input type="hidden" name="CustomerID" asp-for="@item.ID" />
+                    <input type="submit" value="Assign" class="btn btn-primary" />
+                </form>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
