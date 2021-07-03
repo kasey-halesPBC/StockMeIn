@@ -75,8 +75,15 @@
             </div>
         </form>
     </div>
+    @if (Model.Message != null)
+    {
+        <script>
+        window.onload = function () {
+            alert("@Model.Message");
+        };
+        </script>
+    }
 </div>
-
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
