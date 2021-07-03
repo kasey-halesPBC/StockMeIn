@@ -27,3 +27,5 @@ Customers:
   4 - Delete customers from customer list.
 
   5 - View customer information including currently or previously owned vehicles.
+  
+  6 - Add customers to existing customer list.
