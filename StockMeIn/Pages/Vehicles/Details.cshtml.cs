@@ -18,12 +18,15 @@ namespace StockMeIn.Pages.Vehicles
         {
             _context = context;
         }
-
+        // Define properties used by page
         public Vehicle Vehicle { get; set; }
         public CustomerVehicle CustVehicle { get; set; }
         public IList<Customer> Customer { get; set; }
         [BindProperty(SupportsGet = true)]
         public string SearchString { get; set; }
+
+        [ViewData]
+        public string Message { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -81,12 +84,15 @@ namespace StockMeIn.Pages.Vehicles
             await _context.SaveChangesAsync();
             // Get inventory vehicle record and set status to customer
             Vehicle = await _context.Vehicle.FirstOrDefaultAsync(v => v.ID == request.VehicleID);
+            // Set vehicle status to customer
             Vehicle.status = 'C';
+            // Update vehicle record
             _context.Vehicle.Update(Vehicle);
+            // Wait for changes
             await _context.SaveChangesAsync();
 
-            // Redirect to vehicle inventory page
-            return RedirectToPage("./Index");
+            // Redirect to customers info page with customer ID route
+            return RedirectToPage("/Customers/Details", new { id = request.CustomerID });
         }
     }
 }

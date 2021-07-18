@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace StockMeIn.Models
-{
+{  // Customer Model contains formatting and validation
     public class Customer
     {
         [Display(Name = "Cust ID")]

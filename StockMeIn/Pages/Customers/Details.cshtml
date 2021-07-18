@@ -169,9 +169,9 @@
                 <td>
                     <form method="post">
 
-                        <input type="hidden" name="CustomerId" asp-for="Customer.ID" />
-                        <input type="hidden" name="CustVehId" asp-for="@item.CustVehData.ID" />
-                        <input type="submit" value="End" class="btn btn-primary" asp-route-id="@item.CustVehData.CustID" />
+                        <input type="hidden" name="CustID" asp-for="Customer.ID" />
+                        <input type="hidden" name="CustVehicleID" asp-for="@item.CustVehData.ID" />
+                        <input type="submit" value="End" class="btn btn-primary" />
                     </form>
                 </td>
             </tr>
