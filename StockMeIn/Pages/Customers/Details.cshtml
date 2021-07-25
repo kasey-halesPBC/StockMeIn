@@ -166,6 +166,8 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.CustVehData.EndDate)
                 </td>
+                @if (item.CustVehData.EndDate == DateTime.MinValue)
+                {
                 <td>
                     <form method="post">
 
@@ -174,6 +176,7 @@
                         <input type="submit" value="End" class="btn btn-primary" />
                     </form>
                 </td>
+                }
             </tr>
         }
     </tbody>
