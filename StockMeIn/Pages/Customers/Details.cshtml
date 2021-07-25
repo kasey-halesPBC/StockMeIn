@@ -84,6 +84,12 @@
             @Html.DisplayFor(model => model.Customer.CellPhone)
         </dd>
         <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Customer.Email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Customer.Email)
+        </dd>
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Customer.Notes)
         </dt>
         <dd class="col-sm-10">
@@ -97,3 +103,81 @@
         </dd>
     </dl>
 </div>
+
+<div class="text-center">
+    <h2>Owned Vehicles / Vehicle History</h2>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Vehicle[0].ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vehicle[0].VIN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vehicle[0].year)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vehicle[0].make)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vehicle[0].model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vehicle[0].color)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerVehicle[0].StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerVehicle[0].EndDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.CustVehInfo)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustVehData.CustStockID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VehicleInfo.VIN)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VehicleInfo.year)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VehicleInfo.make)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VehicleInfo.model)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VehicleInfo.color)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustVehData.StartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustVehData.EndDate)
+                </td>
+                @if (item.CustVehData.EndDate == DateTime.MinValue)
+                {
+                <td>
+                    <form method="post">
+
+                        <input type="hidden" name="CustID" asp-for="Customer.ID" />
+                        <input type="hidden" name="CustVehicleID" asp-for="@item.CustVehData.ID" />
+                        <input type="submit" value="End" class="btn btn-primary" />
+                    </form>
+                </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>

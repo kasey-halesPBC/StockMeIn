@@ -41,7 +41,7 @@ namespace StockMeIn.Pages.Vehicles
 
             // LINQ query to select models
             if (IsChecked)
-            {  // if cusomer veyicles is checked run for status of 'C'
+            {  // if customer vehicles is checked run for status of 'C'
                 models = from m in _context.Vehicle.Where(m => m.status == 'C')
                              select m;
             }

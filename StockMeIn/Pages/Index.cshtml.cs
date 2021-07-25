@@ -19,7 +19,7 @@ namespace StockMeIn.Pages
         {
             this.configuration = configuration;
         }
-
+        // User properties
         [BindProperty]
         [Required]
         [Display(Name = "User Name:")]
@@ -31,22 +31,25 @@ namespace StockMeIn.Pages
         public string Message { get; set; }
         public async Task<IActionResult> OnPost()
         {
+            // Get user info from appsettings.json file
             var user = configuration.GetSection("SiteUser").Get<SiteUser>();
 
             if (UserName == user.UserName)
-            {
+            {  // if user name is found set password hasher variable
                 var passwordHasher = new PasswordHasher<string>();
                 if (passwordHasher.VerifyHashedPassword(null, user.Password, Password) == PasswordVerificationResult.Success)
-                {
+                {  // User password hasher to decrypt password and veriry. If verified set claim type and identity
                     var claims = new List<Claim>
                     {
                         new Claim(ClaimTypes.Name, UserName)
                     };
                     var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                     await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
+                    // Direct to the vehicles page
                     return RedirectToPage("/vehicles/index");
-                }
-            }
+                }  // End if
+            }  // End if
+            // If not verified display invalid and return to login page
             Message = "Invalid Username and Password";
             return Page();
         }
