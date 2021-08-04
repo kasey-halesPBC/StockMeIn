@@ -42,12 +42,12 @@ namespace StockMeIn.Pages.Vehicles
             // LINQ query to select models
             if (IsChecked)
             {  // if customer vehicles is checked run for status of 'C'
-                models = from m in _context.Vehicle.Where(m => m.status == 'C')
+                models = from m in _context.Vehicle.Where(m => m.status == "C")
                              select m;
             }
             else
             {  // If not checked run for status of 'I'
-                models = from m in _context.Vehicle.Where(m => m.status == 'I')
+                models = from m in _context.Vehicle.Where(m => m.status == "I")
                              select m;
             }
 
@@ -57,13 +57,13 @@ namespace StockMeIn.Pages.Vehicles
                 if (!string.IsNullOrEmpty(SearchString))
                 {  // If search box is not empty search for model string
                     models = models.Where(s => s.model.Contains(SearchString)
-                    && s.status == 'C');
+                    && s.status == "C");
                 }
 
                 if (!string.IsNullOrEmpty(VehicleType))
                 {  // Vehicle type is select search for type selected
                     models = models.Where(x => x.typeNU == VehicleType 
-                    && x.status == 'C');
+                    && x.status == "C");
                 }
             }
             else
@@ -71,13 +71,13 @@ namespace StockMeIn.Pages.Vehicles
                 if (!string.IsNullOrEmpty(SearchString))
                 {  // If search box is not empty search for model string
                     models = models.Where(s => s.model.Contains(SearchString)
-                    && s.status == 'I');
+                    && s.status == "I");
                 }
 
                 if (!string.IsNullOrEmpty(VehicleType))
                 {  // Vehicle type is select search for type selected
                     models = models.Where(x => x.typeNU == VehicleType
-                    && x.status == 'I');
+                    && x.status == "I");
                 }
             }
 

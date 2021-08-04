@@ -50,7 +50,7 @@ namespace StockMeIn.Pages.Vehicles
 
             if (Vehicle != null)
             {  // If vehicle is found set status to 'D' for deleted
-                Vehicle.status = 'D';
+                Vehicle.status = "D";
                 // Update table
                 _context.Vehicle.Update(Vehicle);
                 // Wait for update to finish

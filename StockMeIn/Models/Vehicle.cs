@@ -53,6 +53,6 @@ namespace StockMeIn.Models
         [StringLength(1)]
         // Validate status is C or I
         [RegularExpression(@"[CI]*$", ErrorMessage = "Valid Entries: I for Inventory, C for Customer")]
-        public char status { get; set; }
+        public string status { get; set; }
     }
 }

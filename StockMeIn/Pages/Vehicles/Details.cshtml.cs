@@ -85,7 +85,7 @@ namespace StockMeIn.Pages.Vehicles
             // Get inventory vehicle record and set status to customer
             Vehicle = await _context.Vehicle.FirstOrDefaultAsync(v => v.ID == request.VehicleID);
             // Set vehicle status to customer
-            Vehicle.status = 'C';
+            Vehicle.status = "C";
             // Update vehicle record
             _context.Vehicle.Update(Vehicle);
             // Wait for changes
