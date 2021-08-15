@@ -29,6 +29,7 @@ namespace StockMeIn.Pages
         [Display(Name = "Password:")]
         public string Password { get; set; }
         public string Message { get; set; }
+
         public async Task<IActionResult> OnPost()
         {
             // Get user info from appsettings.json file

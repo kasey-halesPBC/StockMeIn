@@ -1,4 +1,35 @@
 ﻿@page
 @model StockMeIn.Pages.Vehicles.InvCleanupModel
+
 @{
+    ViewData["Title"] = "Edit";
 }
+
+<div class="text-center">
+    <h2>Inventory Cleanup</h2>
+</div>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="DeleteDate" class="control-label"></label>
+                <input asp-for="DeleteDate" class="form-control" />
+                <span asp-validation-for="DeleteDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Cleanup" class="btn btn-danger" />
+            </div>
+        </form>
+    </div>
+    @if (Model.Message != null)
+    {
+        <script>
+        window.onload = function () {
+            alert("@Model.Message");
+        };
+        </script>
+    }
+</div>

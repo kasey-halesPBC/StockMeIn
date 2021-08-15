@@ -43,7 +43,7 @@ namespace StockMeIn.Pages.Vehicles
             {  // If vehicle does exist
                 // Set status to inventory
                 Vehicle = vehCheck;
-                Vehicle.status = 'I';
+                Vehicle.status = "I";
                 // Set inventory date to now
                 Vehicle.inventoryDate = DateTime.Now;
                 // Get vehicle ID for customer vehicle check
@@ -85,7 +85,7 @@ namespace StockMeIn.Pages.Vehicles
             Vehicle.inventoryDate = DateTime.MinValue;
             Vehicle.cost = 0;
             Vehicle.salePrice = 0;
-            Vehicle.status = 'I';
+            Vehicle.status = "I";
             // Clear model state
             ModelState.Clear();
             // Return to vehicle page
